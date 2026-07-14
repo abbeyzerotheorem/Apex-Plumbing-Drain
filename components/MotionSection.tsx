@@ -10,11 +10,14 @@ import { cn } from "@/lib/utils";
 type StaggerProps = HTMLMotionProps<"div"> & {
   delay?: number;
   stagger?: number;
-  className?: string;
 };
 
 type ItemProps = HTMLMotionProps<"div"> & {
-  className?: string;
+  y?: number;
+};
+
+type FadeInProps = HTMLMotionProps<"div"> & {
+  delay?: number;
   y?: number;
 };
 
@@ -31,9 +34,8 @@ export function StaggerIn({
 }: StaggerProps) {
   const reduced = useReducedMotion();
 
-  // Return non-animated version for users with reduced motion preferences
   if (reduced) {
-    return <div className={className}>{children}</div>;
+    return <div className={className} {...(rest as any)}>{children}</div>;
   }
 
   return (
@@ -72,7 +74,7 @@ export function StaggerItem({
   const reduced = useReducedMotion();
 
   if (reduced) {
-    return <div className={className}>{children}</div>;
+    return <div className={className} {...(rest as any)}>{children}</div>;
   }
 
   return (
@@ -103,11 +105,11 @@ export function FadeIn({
   delay = 0,
   y = 12,
   ...rest
-}: HTMLMotionProps<"div"> & { delay?: number; y?: number; className?: string }) {
+}: FadeInProps) {
   const reduced = useReducedMotion();
 
   if (reduced) {
-    return <div className={className}>{children}</div>;
+    return <div className={className} {...(rest as any)}>{children}</div>;
   }
 
   return (
