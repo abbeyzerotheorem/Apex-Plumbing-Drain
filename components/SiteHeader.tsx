@@ -8,20 +8,16 @@ import { plumbingConfig } from "@/data/plumbing";
 import { cn } from "@/lib/utils";
 
 // ==========================================
-// Configuration & Navigation Links
+// Primary Header Component
 // ==========================================
 
-const nav = [
+const HEADER_NAV = [
   { href: "#services", label: "Services" },
   { href: "#estimate", label: "Instant Quote" },
   { href: "#guarantee", label: "Our Standard" },
   { href: "#reviews", label: "Reviews" },
   { href: "#faq", label: "FAQ" },
-];
-
-// ==========================================
-// Primary Header Component
-// ==========================================
+] as const;
 
 export function SiteHeader() {
   const { brand, emergency } = plumbingConfig;
@@ -35,6 +31,16 @@ export function SiteHeader() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // Close mobile nav on route change
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => { document.body.style.overflow = ""; };
+  }, [open]);
 
   return (
     <header
@@ -58,7 +64,7 @@ export function SiteHeader() {
             <span className="absolute -right-0.5 -top-0.5 h-2 w-2 rounded-full bg-[#ea580c] ring-2 ring-white" />
           </span>
           <span className="flex flex-col leading-none">
-            <span className="font-display text-[15px] font-bold tracking-tight text-[#0f172a] sm:text-base">
+            <span className="font-display text-[clamp(0.875rem,2.5vw,1rem)] font-bold tracking-tight text-[#0f172a]">
               {brand.displayName}
             </span>
             <span className="mt-0.5 text-[10px] font-medium uppercase tracking-[0.18em] text-[#64748b] sm:text-[11px]">
@@ -69,7 +75,7 @@ export function SiteHeader() {
 
         {/* Desktop Navigation */}
         <nav className="hidden items-center gap-1 md:flex" aria-label="Primary">
-          {nav.map((item) => (
+          {HEADER_NAV.map((item) => (
             <a
               key={item.href}
               href={item.href}
@@ -117,13 +123,18 @@ export function SiteHeader() {
           id="mobile-nav"
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -8 }}
+          transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
           className="border-t border-[#e2e8f0] bg-white md:hidden"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Mobile navigation"
         >
           <nav
             aria-label="Mobile primary"
             className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-3 sm:px-6"
           >
-            {nav.map((item) => (
+            {HEADER_NAV.map((item) => (
               <a
                 key={item.href}
                 href={item.href}

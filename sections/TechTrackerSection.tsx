@@ -30,8 +30,8 @@ export function TechTrackerSection() {
             <SectionHeader
               as="h2"
               eyebrow="On-the-Way Tech Tracker"
-              title="Know who’s at your door before they knock."
-              description="The moment we dispatch, you get a text with your tech’s photo, a 5-star rating, and a live GPS pin of the truck. You watch them pull up. No mystery van, no surprise technician."
+              title="Know who's at your door before they knock."
+              description="The moment we dispatch, you get a text with your tech's photo, a 5-star rating, and a live GPS pin of the truck. You watch them pull up. No mystery van, no surprise technician."
             />
             <ul className="mt-6 grid gap-3 text-sm text-[#334155]">
               <Feature
@@ -47,7 +47,7 @@ export function TechTrackerSection() {
               <Feature
                 icon={<Star className="h-4 w-4" />}
                 title={`${trust.googleRating}-star average from ${trust.googleReviewCount.toLocaleString()} jobs`}
-                text="Your tech’s last 90 days of customer ratings ride along in the text."
+                text="Your tech's last 90 days of customer ratings ride along in the text."
               />
             </ul>
           </div>
@@ -57,7 +57,7 @@ export function TechTrackerSection() {
               <div className="relative overflow-hidden rounded-[28px] border-[10px] border-[#0f172a] bg-[#0f172a] shadow-[0_30px_60px_-20px_rgba(15,23,42,0.4)]">
                 <div className="absolute left-1/2 top-0 z-10 h-5 w-32 -translate-x-1/2 rounded-b-2xl bg-[#0f172a]" />
                 <div className="relative aspect-[9/19] w-full overflow-hidden bg-[#f0f9ff]">
-                  <PhoneMapVisual reduced={reduced ?? false} />
+                  <PhoneMapVisual reduced={reduced === true} />
                 </div>
               </div>
               <div

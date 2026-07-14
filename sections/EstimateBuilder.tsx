@@ -222,13 +222,27 @@ function Metric({
 function EstimateForm() {
   const { emergency } = plumbingConfig;
   const [submitted, setSubmitted] = useState(false);
+  const [zipError, setZipError] = useState("");
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const zip = (form.elements.namedItem("zip") as HTMLInputElement).value;
+    
+    // US ZIP validation: 5 digits
+    if (!/^\d{5}$/.test(zip)) {
+      setZipError("Please enter a valid 5-digit ZIP code");
+      return;
+    }
+    setZipError("");
+    setSubmitted(true);
+  };
+
   return (
     <form
       id="estimate-form"
-      onSubmit={(e) => {
-        e.preventDefault();
-        setSubmitted(true);
-      }}
+      onSubmit={handleSubmit}
+      noValidate
       className="mt-10 grid items-end gap-4 rounded-2xl border border-[#e2e8f0] bg-white p-5 shadow-[var(--shadow-card)] sm:grid-cols-2 sm:p-7 lg:grid-cols-4"
       aria-label="Request a written plumbing estimate"
     >
@@ -237,7 +251,7 @@ function EstimateForm() {
           Written estimate in your inbox
         </p>
         <h3 className="mt-1.5 font-display text-xl font-bold text-[#0f172a] sm:text-2xl">
-          Tell us a little. We’ll text you a fixed quote.
+          Tell us a little. We'll text you a fixed quote.
         </h3>
       </div>
       <Field label="Your name" htmlFor="name">
@@ -259,20 +273,37 @@ function EstimateForm() {
           inputMode="tel"
           autoComplete="tel"
           placeholder="(512) 555-0142"
+          pattern="[\d\s\-\(\)\+]{7,}"
+          title="Enter a valid phone number"
           className="tap-target w-full rounded-md border border-[#e2e8f0] bg-white px-3.5 py-2.5 text-sm text-[#0f172a] outline-none transition focus:border-[#0284c7] focus:ring-2 focus:ring-[#0284c7]/20"
         />
       </Field>
       <Field label="ZIP code" htmlFor="zip">
-        <input
-          required
-          id="zip"
-          name="zip"
-          inputMode="numeric"
-          autoComplete="postal-code"
-          placeholder="78704"
-          maxLength={5}
-          className="tap-target w-full rounded-md border border-[#e2e8f0] bg-white px-3.5 py-2.5 text-sm text-[#0f172a] outline-none transition focus:border-[#0284c7] focus:ring-2 focus:ring-[#0284c7]/20"
-        />
+        <div>
+          <input
+            required
+            id="zip"
+            name="zip"
+            inputMode="numeric"
+            autoComplete="postal-code"
+            placeholder="78704"
+            maxLength={5}
+            pattern="\d{5}"
+            title="Enter a 5-digit ZIP code"
+            onChange={() => setZipError("")}
+            className={cn(
+              "tap-target w-full rounded-md border bg-white px-3.5 py-2.5 text-sm text-[#0f172a] outline-none transition focus:ring-2",
+              zipError
+                ? "border-red-400 focus:border-red-500 focus:ring-red-500/20"
+                : "border-[#e2e8f0] focus:border-[#0284c7] focus:ring-[#0284c7]/20",
+            )}
+          />
+          {zipError && (
+            <p className="mt-1 text-xs text-red-600" role="alert">
+              {zipError}
+            </p>
+          )}
+        </div>
       </Field>
       <button
         type="submit"
@@ -282,7 +313,7 @@ function EstimateForm() {
       </button>
       {submitted && (
         <p className="text-xs text-emerald-700 lg:col-span-4" role="status">
-          Got it. A real dispatcher will call from {emergency.livePhoneDisplay} within 5 minutes. If you’d rather not wait, tap the call button above.
+          Got it. A real dispatcher will call from {emergency.livePhoneDisplay} within 5 minutes. If you'd rather not wait, tap the call button above.
         </p>
       )}
     </form>

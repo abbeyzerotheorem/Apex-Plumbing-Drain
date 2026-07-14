@@ -19,6 +19,23 @@ import { SiteHeader } from "@/components/SiteHeader";
 // Primary Hero Section Component
 // ==========================================
 
+const heroStagger = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.08, delayChildren: 0.1 },
+  },
+};
+
+const heroItem = (y: number = 12) => ({
+  hidden: { opacity: 0, y },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+  },
+});
+
 export function HeroSection() {
   const { brand, emergency, trust } = plumbingConfig;
   const reduced = useReducedMotion();
@@ -46,12 +63,15 @@ export function HeroSection() {
           {/* ==========================================
               Column 1: Text Copy & Call-to-Actions
               ========================================== */}
-          <div className="lg:col-span-7">
+          <motion.div
+            className="lg:col-span-7"
+            variants={reduced ? undefined : heroStagger}
+            initial={reduced ? undefined : "hidden"}
+            animate={reduced ? undefined : "visible"}
+          >
             {/* Live Dispatch Badge */}
             <motion.div
-              initial={reduced ? false : { opacity: 0, y: 12 }}
-              animate={reduced ? undefined : { opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              variants={reduced ? undefined : heroItem(12)}
               className="inline-flex items-center gap-2 rounded-full border border-[#0284c7]/20 bg-white px-3 py-1.5 text-xs font-semibold text-[#0369a1] shadow-sm"
             >
               <span
@@ -64,10 +84,8 @@ export function HeroSection() {
             {/* Hero Heading */}
             <motion.h1
               id="hero-heading"
-              initial={reduced ? false : { opacity: 0, y: 16 }}
-              animate={reduced ? undefined : { opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-5 font-display text-[40px] font-bold leading-[1.02] tracking-tight text-[#0f172a] text-balance sm:text-5xl lg:text-[64px]"
+              variants={reduced ? undefined : heroItem(16)}
+              className="mt-5 font-display text-[clamp(2.25rem,6vw,4rem)] font-bold leading-[1.02] tracking-tight text-[#0f172a] text-balance sm:text-5xl lg:text-[64px]"
             >
               Leaking pipe?
               <br />
@@ -84,9 +102,7 @@ export function HeroSection() {
 
             {/* Description Paragraph */}
             <motion.p
-              initial={reduced ? false : { opacity: 0, y: 16 }}
-              animate={reduced ? undefined : { opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+              variants={reduced ? undefined : heroItem(16)}
               className="mt-5 max-w-xl text-lg text-[#475569] text-pretty sm:text-xl"
             >
               {brand.tagline} Our {emergency.averageResponseMinutes}-minute average response time
@@ -96,9 +112,7 @@ export function HeroSection() {
 
             {/* Call To Actions */}
             <motion.div
-              initial={reduced ? false : { opacity: 0, y: 16 }}
-              animate={reduced ? undefined : { opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+              variants={reduced ? undefined : heroItem(16)}
               className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center"
             >
               <a
@@ -119,16 +133,14 @@ export function HeroSection() {
 
             {/* Value Props Pill List */}
             <motion.ul
-              initial={reduced ? false : { opacity: 0, y: 16 }}
-              animate={reduced ? undefined : { opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              variants={reduced ? undefined : heroItem(16)}
               className="mt-7 grid grid-cols-1 gap-2.5 text-sm text-[#334155] sm:grid-cols-3"
             >
               <Pill icon={<CheckCircle2 className="h-4 w-4 text-emerald-600" />} text="Flat upfront pricing" />
               <Pill icon={<ShieldCheck className="h-4 w-4 text-emerald-600" />} text="Background-checked techs" />
               <Pill icon={<Clock4 className="h-4 w-4 text-emerald-600" />} text="Written 12-mo warranty" />
             </motion.ul>
-          </div>
+          </motion.div>
 
           {/* ==========================================
               Column 2: Visual Media Column (Image & Cards)

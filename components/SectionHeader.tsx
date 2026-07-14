@@ -32,7 +32,7 @@ export function SectionHeader({
           {eyebrow}
         </p>
       )}
-      <Tag className="font-display text-3xl font-bold leading-[1.08] tracking-tight text-[#0f172a] text-balance sm:text-4xl md:text-[44px]">
+      <Tag className="font-display text-[clamp(1.75rem,5vw,3rem)] font-bold leading-[1.08] tracking-tight text-[#0f172a] text-balance sm:text-4xl md:text-[44px]">
         {title}
       </Tag>
       {description && (
