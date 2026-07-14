@@ -1,0 +1,158 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   Tailwind v4 Theme Configuration
+   ========================================================================== */
+
+@theme {
+  --color-canvas: #f8fafc;
+  --color-ink: #0f172a;
+  --color-aqua: #0284c7;
+  --color-aqua-deep: #0369a1;
+  --color-amber-safety: #ea580c;
+  --color-amber-deep: #c2410c;
+  --color-ice: #f0f9ff;
+  --color-line: #e2e8f0;
+  --color-mist: #cbd5e1;
+
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+
+  --shadow-clinical: 0 1px 2px rgba(15, 23, 42, 0.04), 0 8px 24px -8px rgba(2, 132, 199, 0.18);
+  --shadow-emergency: 0 0 0 4px rgba(234, 88, 12, 0.18), 0 12px 32px -6px rgba(234, 88, 12, 0.35);
+  --shadow-card: 0 1px 0 rgba(15, 23, 42, 0.04), 0 12px 28px -16px rgba(15, 23, 42, 0.18);
+}
+
+/* ==========================================================================
+   Base Layer Resets
+   ========================================================================== */
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-feature-settings: "ss01", "cv11";
+    min-height: 100dvh;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: var(--color-aqua);
+    color: #fff;
+  }
+
+  *:focus-visible {
+    outline: 3px solid var(--color-aqua);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  button, a {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* ==========================================================================
+   Custom Utility Classes
+   ========================================================================== */
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  .grid-clinical {
+    background-image: 
+      linear-gradient(to right, rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  .bg-noise {
+    background-image: radial-gradient(rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+    background-size: 16px 16px;
+  }
+
+  .ring-clinical {
+    box-shadow: 0 0 0 1px rgba(226, 232, 240, 0.9), 0 1px 0 rgba(15, 23, 42, 0.03);
+  }
+
+  .tap-target {
+    min-width: 50px;
+    min-height: 50px;
+  }
+
+  .pulse-emergency {
+    animation: pulse-emergency 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .shimmer-line {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(2, 132, 199, 0.15) 50%,
+      transparent 100
+    );
+    background-size: 200% 100%;
+    animation: shimmer-line 3s linear infinite;
+  }
+}
+
+/* ==========================================================================
+   Keyframe Animations
+   ========================================================================== */
+
+@keyframes pulse-emergency {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(234, 88, 12, 0.55), 0 0 0 0 rgba(234, 88, 12, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(234, 88, 12, 0), 0 0 0 16px rgba(234, 88, 12, 0);
+  }
+}
+
+@keyframes shimmer-line {
+  0% { 
+    background-position: 200% 0; 
+  }
+  100% { 
+    background-position: -200% 0; 
+  }
+}
+
+/* ==========================================================================
+   Accessibility: Reduced Motion Media Query
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .pulse-emergency,
+  .shimmer-line {
+    animation: none !important;
+  }
+}
