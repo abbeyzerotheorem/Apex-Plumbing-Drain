@@ -79,7 +79,7 @@ export function SiteHeader() {
             <a
               key={item.href}
               href={item.href}
-              className="rounded-md px-3 py-2 text-sm font-medium text-[#334155] transition hover:bg-[#f0f9ff] hover:text-[#0369a1]"
+              className="rounded-md px-3 py-2 text-sm font-medium text-[#334155] transition-all duration-200 ease-in-out hover:bg-[#f0f9ff] hover:text-[#0369a1]"
             >
               {item.label}
             </a>
@@ -90,15 +90,23 @@ export function SiteHeader() {
         <div className="flex items-center gap-2">
           <a
             href={emergency.livePhoneHref}
-            className="hidden items-center gap-2 rounded-md border border-[#0284c7]/15 bg-[#f0f9ff] px-3 py-2 text-sm font-semibold text-[#0369a1] transition hover:border-[#0284c7]/35 hover:bg-[#e0f2fe] lg:inline-flex"
+            className="hidden items-center gap-2 rounded-md border border-[#0284c7]/15 bg-[#f0f9ff] px-3 py-2 text-sm font-semibold text-[#0369a1] transition-all duration-200 ease-in-out hover:border-[#0284c7]/35 hover:bg-[#e0f2fe] lg:inline-flex"
           >
             <Phone className="h-4 w-4" aria-hidden />
             {emergency.livePhoneDisplay}
           </a>
+
+          <a
+            href={emergency.livePhoneHref}
+            aria-label={`Call emergency line ${emergency.livePhoneDisplay}`}
+            className="tap-target grid place-items-center rounded-md bg-[#ea580c] text-white shadow-sm transition-all duration-200 ease-in-out hover:bg-[#c2410c] md:hidden"
+          >
+            <Phone className="h-5 w-5" aria-hidden />
+          </a>
           
           <a
             href="#estimate"
-            className="inline-flex items-center justify-center rounded-md bg-[#0f172a] px-3.5 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-[#1e293b] active:translate-y-[1px]"
+            className="inline-flex items-center justify-center rounded-md bg-[#0f172a] px-3.5 py-2 text-sm font-semibold text-white shadow-sm transition-all duration-200 ease-in-out hover:bg-[#1e293b] active:translate-y-[1px]"
           >
             Book a Tech
           </a>
@@ -106,7 +114,7 @@ export function SiteHeader() {
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
-            className="tap-target grid place-items-center rounded-md text-[#0f172a] transition hover:bg-[#f0f9ff] md:hidden"
+            className="tap-target grid place-items-center rounded-md text-[#0f172a] transition-all duration-200 ease-in-out hover:bg-[#f0f9ff] md:hidden"
             aria-expanded={open}
             aria-controls="mobile-nav"
             aria-label={open ? "Close menu" : "Open menu"}
@@ -139,14 +147,14 @@ export function SiteHeader() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="tap-target rounded-md px-3 py-2.5 text-sm font-medium text-[#334155] hover:bg-[#f0f9ff] hover:text-[#0369a1]"
+                className="tap-target rounded-md px-3 py-2.5 text-sm font-medium text-[#334155] transition-all duration-200 ease-in-out hover:bg-[#f0f9ff] hover:text-[#0369a1]"
               >
                 {item.label}
               </a>
             ))}
             <a
               href={emergency.livePhoneHref}
-              className="mt-1 inline-flex items-center justify-center gap-2 rounded-md border border-[#0284c7]/15 bg-[#f0f9ff] px-3 py-3 text-sm font-semibold text-[#0369a1]"
+              className="mt-1 inline-flex items-center justify-center gap-2 rounded-md border border-[#0284c7]/15 bg-[#f0f9ff] px-3 py-3 text-sm font-semibold text-[#0369a1] transition-all duration-200 ease-in-out hover:bg-[#e0f2fe]"
             >
               <Phone className="h-4 w-4" aria-hidden />
               Call {emergency.livePhoneDisplay}

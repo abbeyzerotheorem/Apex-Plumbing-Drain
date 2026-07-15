@@ -103,11 +103,10 @@ export function HeroSection() {
             {/* Description Paragraph */}
             <motion.p
               variants={reduced ? undefined : heroItem(16)}
-              className="mt-5 max-w-xl text-lg text-[#475569] text-pretty sm:text-xl"
+              className="mt-5 max-w-2xl text-xl font-medium leading-relaxed text-[#334155] text-pretty sm:text-2xl"
             >
-              {brand.tagline} Our {emergency.averageResponseMinutes}-minute average response time
-              means a real human dispatcher, a background-checked tech, and a clean work area —
-              usually before you finish mopping up.
+              Fast, transparent, and professional plumbing services. 24/7 emergency
+              response with upfront pricing and zero hidden fees.
             </motion.p>
 
             {/* Call To Actions */}
@@ -117,16 +116,16 @@ export function HeroSection() {
             >
               <a
                 href={emergency.livePhoneHref}
-                className="pulse-emergency tap-target group inline-flex items-center justify-center gap-2.5 rounded-md bg-[#ea580c] px-6 py-3.5 text-base font-bold text-white shadow-[var(--shadow-emergency)] transition hover:bg-[#c2410c] active:translate-y-[1px]"
+                className="pulse-emergency tap-target group inline-flex items-center justify-center gap-2.5 rounded-md bg-[#ea580c] px-7 py-4 text-base font-bold text-white shadow-[var(--shadow-emergency)] transition-all duration-200 ease-in-out hover:bg-[#c2410c] hover:shadow-[0_0_0_6px_rgba(234,88,12,0.15),0_12px_32px_-6px_rgba(234,88,12,0.4)] active:translate-y-[1px]"
               >
-                <Phone className="h-5 w-5 transition group-hover:scale-110" aria-hidden />
+                <Phone className="h-5 w-5 transition-transform duration-200 ease-in-out group-hover:scale-110" aria-hidden />
                 Call {emergency.livePhoneDisplay}
               </a>
               <a
                 href="#estimate"
-                className="tap-target group inline-flex items-center justify-center gap-2.5 rounded-md border border-[#0f172a]/12 bg-white px-6 py-3.5 text-base font-semibold text-[#0f172a] transition hover:border-[#0f172a]/30 hover:bg-[#f8fafc] active:translate-y-[1px]"
+                className="tap-target group inline-flex items-center justify-center gap-2.5 rounded-md border border-[#0f172a]/12 bg-white px-7 py-4 text-base font-semibold text-[#0f172a] transition-all duration-200 ease-in-out hover:border-[#0f172a]/30 hover:bg-[#f8fafc] hover:shadow-md active:translate-y-[1px]"
               >
-                <CalendarCheck className="h-5 w-5 text-[#0369a1]" aria-hidden />
+                <CalendarCheck className="h-5 w-5 text-[#0369a1] transition-transform duration-200 ease-in-out group-hover:scale-110" aria-hidden />
                 Schedule Maintenance
               </a>
             </motion.div>
@@ -155,7 +154,7 @@ export function HeroSection() {
               {/* Primary Image Wrapper */}
               <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-[#e2e8f0] bg-[#0f172a] shadow-[0_30px_60px_-30px_rgba(2,132,199,0.45)]">
                 <Image
-                  src="https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?auto=format&fit=crop&w=900&q=70"
+                  src="/hero.jpeg"
                   alt="Apex Plumbing technician tightening a fixture in a bright residential kitchen"
                   fill
                   priority
@@ -264,7 +263,7 @@ export function HeroSection() {
 
 function Pill({ icon, text }: { icon: React.ReactNode; text: string }) {
   return (
-    <li className="inline-flex items-center gap-2 rounded-md border border-[#e2e8f0] bg-white/70 px-3 py-2">
+    <li className="inline-flex items-center gap-2 rounded-md border border-[#e2e8f0] bg-white/70 px-3 py-2 transition-all duration-200 ease-in-out hover:border-[#0284c7]/30 hover:bg-white">
       {icon}
       <span className="font-medium">{text}</span>
     </li>

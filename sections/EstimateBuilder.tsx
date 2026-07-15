@@ -72,7 +72,7 @@ export function EstimateBuilder() {
                       aria-checked={selected}
                       onClick={() => setActiveId(s.id)}
                       className={cn(
-                        "tap-target group flex w-full items-start gap-3 rounded-xl border bg-white p-3 text-left transition",
+                        "tap-target group flex w-full items-start gap-3 rounded-xl border bg-white p-3 text-left transition-all duration-200 ease-in-out",
                         selected
                           ? "border-[#0284c7] ring-2 ring-[#0284c7]/25 shadow-[var(--shadow-clinical)]"
                           : "border-[#e2e8f0] hover:border-[#0284c7]/40 hover:bg-[#f0f9ff]",
@@ -80,7 +80,7 @@ export function EstimateBuilder() {
                     >
                       <span
                         className={cn(
-                          "mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-lg transition",
+                          "mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-lg transition-all duration-200 ease-in-out",
                           selected
                             ? "bg-[#0284c7] text-white"
                             : "bg-[#f0f9ff] text-[#0369a1] group-hover:bg-[#e0f2fe]",
@@ -166,14 +166,14 @@ export function EstimateBuilder() {
                   <div className="mt-6 flex flex-col gap-2.5 sm:flex-row">
                     <a
                       href={emergency.livePhoneHref}
-                      className="tap-target inline-flex flex-1 items-center justify-center gap-2 rounded-md bg-[#0f172a] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#1e293b] active:translate-y-[1px]"
+                      className="tap-target inline-flex flex-1 items-center justify-center gap-2 rounded-md bg-[#0f172a] px-5 py-3 text-sm font-semibold text-white transition-all duration-200 ease-in-out hover:bg-[#1e293b] active:translate-y-[1px]"
                     >
                       <Phone className="h-4 w-4" aria-hidden />
                       Book a Tech by Phone
                     </a>
                     <a
                       href="#estimate-form"
-                      className="tap-target inline-flex flex-1 items-center justify-center gap-2 rounded-md border border-[#0284c7]/30 bg-white px-5 py-3 text-sm font-semibold text-[#0369a1] transition hover:border-[#0284c7] hover:bg-[#f0f9ff] active:translate-y-[1px]"
+                      className="tap-target inline-flex flex-1 items-center justify-center gap-2 rounded-md border border-[#0284c7]/30 bg-white px-5 py-3 text-sm font-semibold text-[#0369a1] transition-all duration-200 ease-in-out hover:border-[#0284c7] hover:bg-[#f0f9ff] active:translate-y-[1px]"
                     >
                       <CalendarCheck className="h-4 w-4" aria-hidden />
                       Get a Written Quote
@@ -192,6 +192,34 @@ export function EstimateBuilder() {
         </div>
 
         <EstimateForm />
+
+        {/* Emergency Escape-Hatch Banner */}
+        <div
+          role="complementary"
+          aria-label="Emergency call option"
+          className="mt-8 flex flex-col items-center gap-4 rounded-2xl border border-[#ea580c]/20 bg-gradient-to-r from-[#fff1ea] to-[#fff7ed] px-6 py-5 text-center sm:flex-row sm:text-left"
+        >
+          <div className="flex items-center gap-3">
+            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[#ea580c]/15 text-[#ea580c]">
+              <Phone className="h-5 w-5" aria-hidden />
+            </span>
+            <div>
+              <p className="text-sm font-semibold text-[#0f172a]">
+                In a hurry? Skip the estimate and speak to a plumber immediately.
+              </p>
+              <p className="text-xs text-[#64748b]">
+                A real dispatcher answers 24/7 — no phone tree, no runaround.
+              </p>
+            </div>
+          </div>
+          <a
+            href={emergency.livePhoneHref}
+            className="tap-target inline-flex shrink-0 items-center justify-center gap-2 rounded-md bg-[#ea580c] px-5 py-3 text-sm font-bold text-white shadow-[var(--shadow-emergency)] transition-all duration-200 ease-in-out hover:bg-[#c2410c] active:translate-y-[1px]"
+          >
+            <Phone className="h-4 w-4" aria-hidden />
+            Call Now
+          </a>
+        </div>
       </div>
     </section>
   );
@@ -307,7 +335,7 @@ function EstimateForm() {
       </Field>
       <button
         type="submit"
-        className="tap-target inline-flex items-center justify-center gap-2 rounded-md bg-[#ea580c] px-5 py-3 text-sm font-bold text-white shadow-[var(--shadow-emergency)] transition hover:bg-[#c2410c] active:translate-y-[1px]"
+        className="tap-target inline-flex items-center justify-center gap-2 rounded-md bg-[#ea580c] px-5 py-3 text-sm font-bold text-white shadow-[var(--shadow-emergency)] transition-all duration-200 ease-in-out hover:bg-[#c2410c] active:translate-y-[1px]"
       >
         {submitted ? "Request received — calling you now" : "Request my estimate"}
       </button>

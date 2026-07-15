@@ -36,14 +36,14 @@ export function CtaBand() {
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
               <a
                 href={emergency.livePhoneHref}
-                className="pulse-emergency tap-target inline-flex items-center justify-center gap-2 rounded-md bg-[#ea580c] px-6 py-3.5 text-base font-bold text-white shadow-[var(--shadow-emergency)] transition hover:bg-[#c2410c] active:translate-y-[1px]"
+                className="pulse-emergency tap-target inline-flex items-center justify-center gap-2 rounded-md bg-[#ea580c] px-6 py-3.5 text-base font-bold text-white shadow-[var(--shadow-emergency)] transition-all duration-200 ease-in-out hover:bg-[#c2410c] active:translate-y-[1px]"
               >
                 <Phone className="h-5 w-5" aria-hidden />
                 Call {emergency.livePhoneDisplay}
               </a>
               <a
                 href="#estimate"
-                className="tap-target inline-flex items-center justify-center gap-2 rounded-md border border-white/25 bg-white/10 px-6 py-3.5 text-base font-semibold text-white backdrop-blur transition hover:bg-white/15 active:translate-y-[1px]"
+                className="tap-target inline-flex items-center justify-center gap-2 rounded-md border border-white/25 bg-white/10 px-6 py-3.5 text-base font-semibold text-white backdrop-blur transition-all duration-200 ease-in-out hover:bg-white/15 active:translate-y-[1px]"
               >
                 <CalendarCheck className="h-5 w-5" aria-hidden />
                 Schedule a visit
@@ -88,7 +88,7 @@ function Row({
     <li>
       <a
         href={href}
-        className="tap-target flex items-center gap-3 rounded-lg border border-white/10 bg-white/[0.06] px-3 py-2.5 transition hover:border-white/30 hover:bg-white/[0.12]"
+        className="tap-target flex items-center gap-3 rounded-lg border border-white/10 bg-white/[0.06] px-3 py-2.5 transition-all duration-200 ease-in-out hover:border-white/30 hover:bg-white/[0.12]"
       >
         <span className="grid h-8 w-8 place-items-center rounded-md bg-white/15 text-white">
           {icon}

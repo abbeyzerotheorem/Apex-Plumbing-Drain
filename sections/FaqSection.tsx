@@ -48,7 +48,7 @@ export function FaqSection() {
                       onClick={() => setOpenId(open ? null : f.id)}
                       aria-expanded={open}
                       aria-controls={`faq-panel-${f.id}`}
-                      className="tap-target flex w-full items-center justify-between gap-4 px-5 py-5 text-left transition hover:bg-[#f8fafc] sm:px-6"
+                      className="tap-target flex w-full items-center justify-between gap-4 px-5 py-5 text-left transition-all duration-200 ease-in-out hover:bg-[#f8fafc] sm:px-6"
                     >
                       <span className="min-w-0">
                         <span className="block text-[10px] font-semibold uppercase tracking-[0.16em] text-[#0369a1]">
@@ -60,7 +60,7 @@ export function FaqSection() {
                       </span>
                       <span
                         className={cn(
-                          "grid h-9 w-9 shrink-0 place-items-center rounded-full border transition",
+                          "grid h-9 w-9 shrink-0 place-items-center rounded-full border transition-all duration-200 ease-in-out",
                           open
                             ? "border-[#0284c7] bg-[#0284c7] text-white"
                             : "border-[#e2e8f0] bg-white text-[#0369a1]",

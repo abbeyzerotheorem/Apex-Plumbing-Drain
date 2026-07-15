@@ -33,7 +33,7 @@ export function EmergencyRibbon() {
         <div className="flex shrink-0 items-center gap-1.5 sm:gap-3">
           <a
             href={emergency.smsNumberHref}
-            className="hidden items-center gap-1.5 rounded-md px-2 py-1 text-white/85 transition hover:bg-white/10 hover:text-white sm:inline-flex"
+            className="hidden items-center gap-1.5 rounded-md px-2 py-1 text-white/85 transition-all duration-200 ease-in-out hover:bg-white/10 hover:text-white sm:inline-flex"
           >
             <MessageSquare className="h-3.5 w-3.5" aria-hidden />
             <span>Text {emergency.smsNumberDisplay}</span>
@@ -48,7 +48,7 @@ export function EmergencyRibbon() {
           
           <a
             href={emergency.livePhoneHref}
-            className="ml-1 inline-flex items-center gap-1.5 rounded-md bg-[#ea580c] px-2.5 py-1 font-semibold text-white transition hover:bg-[#c2410c] sm:ml-2 sm:px-3"
+            className="ml-1 inline-flex items-center gap-1.5 rounded-md bg-[#ea580c] px-2.5 py-1 font-semibold text-white transition-all duration-200 ease-in-out hover:bg-[#c2410c] sm:ml-2 sm:px-3"
           >
             <Phone className="h-3.5 w-3.5" aria-hidden />
             <span className="sm:hidden">Call</span>

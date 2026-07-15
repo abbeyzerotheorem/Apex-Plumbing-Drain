@@ -40,11 +40,12 @@ export function GuaranteeSection() {
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
         <div className="grid items-end gap-6 lg:grid-cols-12">
           <div className="lg:col-span-8">
-            <SectionHeader
+            <SectionHeader 
               as="h2"
               eyebrow="The Professional Standard"
               title="Boots on. Mats down. No mess left behind — or the service is free."
               description="Most homeowner horror stories start with ‘they tracked mud through the house’ and end with ‘the bill was twice the quote.’ We engineered our entire operation around eliminating both."
+              titleClassName="text-white"
             />
           </div>
           <div className="lg:col-span-4">
@@ -73,7 +74,7 @@ export function GuaranteeSection() {
               <StaggerItem
                 key={g.id}
                 className={cn(
-                  "group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition",
+                  "group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition-all duration-200 ease-in-out",
                   "hover:border-[#7dd3fc]/40 hover:bg-white/[0.06]",
                 )}
               >
@@ -106,7 +107,7 @@ export function GuaranteeSection() {
                 </div>
 
                 <Sparkles
-                  className="pointer-events-none absolute -right-6 -top-6 h-24 w-24 text-white/[0.04] transition group-hover:text-white/[0.07]"
+                  className="pointer-events-none absolute -right-6 -top-6 h-24 w-24 text-white/[0.04] transition-all duration-200 ease-in-out group-hover:text-white/[0.07]"
                   aria-hidden
                 />
               </StaggerItem>

@@ -18,7 +18,7 @@ export function MobilePanicBar() {
         <a
           href={emergency.livePhoneHref}
           aria-label={`Call emergency line ${emergency.livePhoneDisplay}`}
-          className="pulse-emergency tap-target col-span-1 inline-flex flex-col items-center justify-center gap-0.5 rounded-lg bg-[#ea580c] py-2.5 text-white transition active:translate-y-[1px]"
+          className="pulse-emergency tap-target col-span-1 inline-flex flex-col items-center justify-center gap-0.5 rounded-lg bg-[#ea580c] py-2.5 text-white transition-all duration-200 ease-in-out active:translate-y-[1px]"
         >
           <Phone className="h-5 w-5" aria-hidden />
           <span className="text-[11px] font-semibold leading-tight tracking-wide">
@@ -30,7 +30,7 @@ export function MobilePanicBar() {
         <a
           href="#estimate"
           aria-label="Book a technician online"
-          className="tap-target col-span-1 inline-flex flex-col items-center justify-center gap-0.5 rounded-lg bg-[#0284c7] py-2.5 text-white transition active:translate-y-[1px]"
+          className="tap-target col-span-1 inline-flex flex-col items-center justify-center gap-0.5 rounded-lg bg-[#0284c7] py-2.5 text-white transition-all duration-200 ease-in-out active:translate-y-[1px]"
         >
           <CalendarCheck className="h-5 w-5" aria-hidden />
           <span className="text-[11px] font-semibold leading-tight tracking-wide">
@@ -42,7 +42,7 @@ export function MobilePanicBar() {
         <a
           href={emergency.smsNumberHref}
           aria-label={`Text dispatch at ${emergency.smsNumberDisplay}`}
-          className="tap-target col-span-1 inline-flex flex-col items-center justify-center gap-0.5 rounded-lg bg-[#0f172a] py-2.5 text-white transition active:translate-y-[1px]"
+          className="tap-target col-span-1 inline-flex flex-col items-center justify-center gap-0.5 rounded-lg bg-[#0f172a] py-2.5 text-white transition-all duration-200 ease-in-out active:translate-y-[1px]"
         >
           <MessageSquare className="h-5 w-5" aria-hidden />
           <span className="text-[11px] font-semibold leading-tight tracking-wide">

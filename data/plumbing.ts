@@ -30,10 +30,10 @@ export const plumbingConfig: PlumbingConfig = {
   },
   emergency: {
     livePhoneDisplay: "(512) 555-0117",
-    livePhoneHref: "tel:+15125550117",
+    livePhoneHref: "tel:+00000000000",
     smsNumberDisplay: "Text 70717",
-    smsNumberHref: "sms:+15125550118",
-    dispatchEmail: "dispatch@apexplumbing.example",
+    smsNumberHref: "sms:+00000000000",
+    dispatchEmail: "zerotheorem01@gmail.com",
     averageResponseMinutes: 45,
     crewsOnShift: 8,
     crewsAvailable: 3,

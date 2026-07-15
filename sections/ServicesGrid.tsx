@@ -58,10 +58,10 @@ export function ServicesGrid() {
             return (
               <StaggerItem
                 key={s.id}
-                className="group relative flex flex-col overflow-hidden rounded-2xl border border-[#e2e8f0] bg-white p-5 transition hover:-translate-y-0.5 hover:border-[#0284c7]/30 hover:shadow-[var(--shadow-card)]"
+                className="group relative flex flex-col overflow-hidden rounded-2xl border border-[#e2e8f0] bg-white p-5 transition-all duration-200 ease-in-out hover:-translate-y-0.5 hover:border-[#0284c7]/30 hover:shadow-[var(--shadow-card)]"
               >
                 <div className="flex items-start justify-between">
-                  <span className="grid h-11 w-11 place-items-center rounded-xl bg-[#f0f9ff] text-[#0369a1] ring-1 ring-[#0284c7]/15 transition group-hover:bg-[#0284c7] group-hover:text-white">
+                  <span className="grid h-11 w-11 place-items-center rounded-xl bg-[#f0f9ff] text-[#0369a1] ring-1 ring-[#0284c7]/15 transition-all duration-200 ease-in-out group-hover:bg-[#0284c7] group-hover:text-white">
                     <Icon className="h-5 w-5" />
                   </span>
                   <span
